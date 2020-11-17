@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="angry-moons"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://Assets/icon.png"
 
 [physics]
