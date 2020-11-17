@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Planet.png-04a54400b6575ccfa905ccbfef6c2e9d.stex"
+path="res://.import/Ananas.png-6a331083e03b85e4ab48c2d8c81a7e00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlanetAssets/Planet.png"
-dest_files=[ "res://.import/Planet.png-04a54400b6575ccfa905ccbfef6c2e9d.stex" ]
+source_file="res://Assets/Müll/Ananas.png"
+dest_files=[ "res://.import/Ananas.png-6a331083e03b85e4ab48c2d8c81a7e00.stex" ]
 
 [params]
 
