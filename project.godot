@@ -37,6 +37,11 @@ right={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="Earth"
+2d_render/layer_2="Moon"
+
 [physics]
 
 2d/default_gravity_vector=Vector2( 0, 0 )

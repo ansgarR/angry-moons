@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Earth.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Earth.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Earth.gd" type="Script" id=2]
 [ext_resource path="res://Assets/space.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/CameraNode.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Moon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/MoonGroup.gd" type="Script" id=6]
 
 [node name="Main" type="Node2D"]
 
@@ -36,6 +37,7 @@ script = ExtResource( 2 )
 [node name="TrashSpawnTimer" type="Timer" parent="Earth"]
 autostart = true
 
-[node name="Moon" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, -629.21 )
+[node name="MoonGroup" type="Node" parent="."]
+script = ExtResource( 6 )
+moon_scene = ExtResource( 5 )
 [connection signal="timeout" from="Earth/TrashSpawnTimer" to="Earth" method="_on_TrashSpawnTimer_timeout"]
