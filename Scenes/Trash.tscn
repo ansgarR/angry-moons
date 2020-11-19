@@ -3,7 +3,6 @@
 [ext_resource path="res://Assets/Trash/Ananas.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Trash.gd" type="Script" id=2]
 
-
 [sub_resource type="PhysicsMaterial" id=1]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -11,10 +10,10 @@ radius = 12.2625
 height = 29.425
 
 [node name="Trash" type="RigidBody2D"]
-collision_layer = 2147483651
-collision_mask = 3
+input_pickable = true
+collision_layer = 2147483649
 physics_material_override = SubResource( 1 )
-contacts_reported = 1
+contacts_reported = 10
 contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
@@ -28,3 +27,5 @@ texture = ExtResource( 1 )
 position = Vector2( -1.3125, 0.162476 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Trash_body_entered"]
+[connection signal="input_event" from="." to="." method="_on_Trash_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Trash_mouse_entered"]
