@@ -5,8 +5,9 @@ func _on_Trash_body_entered(body : Node):
 		queue_free()
 	pass
 
-#func _input(event):
-#	print(event.as_text())
+func _process(delta):
+	if Input.is_action_pressed("mouse_left"):
+		print("da fuq")
 
 func _on_Trash_input_event(viewport, event, shape_idx):
 	print("Houston we have an event")
