@@ -7,16 +7,26 @@
 [sub_resource type="GDScript" id=2]
 script/source = "extends RigidBody2D
 
+var force : Vector2
+
 func _on_Trash_body_entered(body : Node):
 	if body.is_in_group(\"Moons\"):
 		queue_free()
 	pass
 
 func _on_Trash_input_event(viewport, event, shape_idx):
+	print(\"event detected\")
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
-			var force = Vector2(randf() * 1000, randf() * 1000)
-			apply_central_impulse(force)
+			print(\"event is mouse1\")
+			if event.is_pressed():
+				print(\"mouse1 is pressed\")
+				force = Vector2(randf() * 1000, randf() * 1000)
+				print(force)
+			if !event.is_pressed():
+				print(\"mouse1 released\")	
+				print(\"will apply: \", force)
+				apply_central_impulse(force)	
 "
 
 [sub_resource type="CapsuleShape2D" id=3]
