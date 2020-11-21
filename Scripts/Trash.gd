@@ -8,6 +8,7 @@ var original_pos : Vector2
 func _on_Trash_body_entered(body : Node):
 	if body.is_in_group("Moon"):
 		queue_free()
+		body.escalate()
 	pass
 
 func _on_Trash_input_event(viewport, event, shape_idx):
