@@ -5,13 +5,13 @@ signal clicked
 var held = false
 var original_pos : Vector2
 
-func _on_Trash_body_entered(body : Node):
+func _on_Trash_body_entered(body):
 	if body.is_in_group("Moon"):
 		queue_free()
 		body.escalate()
 	pass
 
-func _on_Trash_input_event(viewport, event, shape_idx):
+func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
