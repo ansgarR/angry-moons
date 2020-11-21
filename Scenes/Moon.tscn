@@ -6,10 +6,11 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.0529
 
-[node name="Moon" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 2147483650
-mass = 1.63061
+[node name="Moon" type="RigidBody2D" groups=[
+"Moon",
+]]
+collision_layer = 0
+collision_mask = 2147483651
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )

@@ -1,22 +1,36 @@
 extends RigidBody2D
 
+signal clicked
+
+var held = false
+var original_pos : Vector2
+
 func _on_Trash_body_entered(body : Node):
-	if body.is_in_group("Moons"):
+	if body.is_in_group("Moon"):
 		queue_free()
 	pass
 
-func _process(delta):
-	if Input.is_action_pressed("mouse_left"):
-		print("da fuq")
-
 func _on_Trash_input_event(viewport, event, shape_idx):
-	print("Houston we have an event")
 	if event is InputEventMouseButton:
-		print("hitting the müll")
-		var force = Vector2(randf() * 100, randf() * 100)
-		apply_central_impulse(force)
+		if event.button_index == BUTTON_LEFT:
+			if event.is_pressed():
+				emit_signal("clicked", self)
 
+func pickup():
+	original_pos = position
+	held = true
+	mode = MODE_STATIC
+	z_index = 5
+	collision_layer = 0
 
-func _on_Trash_mouse_entered():
-	print("mouse entered")
-	pass # Replace with function body.
+func drop():
+	held = false
+	collision_layer = 1
+
+func shoot(impulse : Vector2):
+	mode = MODE_RIGID
+	apply_central_impulse(impulse)
+
+func _physics_process(delta):
+	if held:
+		global_transform.origin = get_global_mouse_position()

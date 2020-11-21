@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Earth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Earth.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/CameraNode.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Moon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/MoonGroup.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Rubberband.gd" type="Script" id=7]
 
 [node name="Main" type="Node2D"]
 
@@ -31,7 +32,16 @@ rotating = true
 current = true
 
 [node name="Earth" parent="." instance=ExtResource( 1 )]
+z_index = 1
 script = ExtResource( 2 )
+
+[node name="Rubberband" type="Line2D" parent="Earth"]
+position = Vector2( 0, 10 )
+z_index = 2
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 10.024
+default_color = Color( 0, 0.0862745, 0.54902, 1 )
+script = ExtResource( 7 )
 
 [node name="TrashGroup" type="Node" parent="Earth"]
 
@@ -41,4 +51,5 @@ autostart = true
 [node name="MoonGroup" type="Node" parent="."]
 script = ExtResource( 6 )
 moon_scene = ExtResource( 5 )
+[connection signal="shot" from="Earth/Rubberband" to="Earth" method="_on_Rubberband_shot"]
 [connection signal="timeout" from="Earth/TrashSpawnTimer" to="Earth" method="_on_TrashSpawnTimer_timeout"]
