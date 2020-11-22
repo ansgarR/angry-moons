@@ -67,10 +67,12 @@ moon_scene = ExtResource( 5 )
 script = ExtResource( 9 )
 
 [node name="Score" type="Label" parent="GUI"]
-margin_left = -6.73468
-margin_top = 15.2817
-margin_right = 477.265
-margin_bottom = 145.282
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -206.944
+margin_top = 21.9336
+margin_right = -4.94385
+margin_bottom = 105.934
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 2
@@ -79,10 +81,12 @@ __meta__ = {
 }
 
 [node name="HighScore" type="Label" parent="GUI"]
-margin_left = -6.01434
-margin_top = 2.55131
-margin_right = 471.986
-margin_bottom = 83.5513
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -211.0
+margin_top = 5.66325
+margin_right = -4.0
+margin_bottom = 86.6633
 custom_fonts/font = SubResource( 2 )
 text = "Highscore     2"
 align = 2

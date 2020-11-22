@@ -1,5 +1,5 @@
 extends RigidBody2D
-
+class_name Trash
 onready var animationSprite = $"AnimatedSprite"
 
 export(PackedScene) var explosion_scene
@@ -52,10 +52,6 @@ func shoot(impulse : Vector2):
 
 func _process(delta):
 	happy(held || collisionCounter == 0)
-
-func _physics_process(delta):
-	if held:
-		global_transform.origin = get_global_mouse_position()
 
 func explode():
 	queue_free()

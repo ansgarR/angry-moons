@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Moon",
 "language": "GDScript",
 "path": "res://Scripts/Moon.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Trash",
+"language": "GDScript",
+"path": "res://Scripts/Trash.gd"
 } ]
 _global_script_class_icons={
-"Moon": ""
+"Moon": "",
+"Trash": ""
 }
 
 [application]
