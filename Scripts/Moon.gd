@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Moon
 
 onready var animationSprite = $"AnimatedSprite"
 var is_chill = true
@@ -20,21 +21,21 @@ func _ready():
 func trash_hit():
 	is_chill = false
 	hit_counter+=1
-	if hit_counter > 9:
+	if hit_counter > 30:
 		animationSprite.animation = "hit9"
-	elif hit_counter > 8:
+	elif hit_counter > 26:
 		animationSprite.animation = "hit8"
-	elif hit_counter > 7:
+	elif hit_counter > 23:
 		animationSprite.animation = "hit7"
-	elif hit_counter > 6:
+	elif hit_counter > 17:
 		animationSprite.animation = "hit6"
-	elif hit_counter > 5:
+	elif hit_counter > 12:
 		animationSprite.animation = "hit5"
-	elif hit_counter > 4:
+	elif hit_counter > 8:
 		animationSprite.animation = "hit4"
-	elif hit_counter > 3:
+	elif hit_counter > 6:
 		animationSprite.animation = "hit3"
-	elif hit_counter > 2:
+	elif hit_counter > 3:
 		animationSprite.animation = "hit2"
 	elif hit_counter > 1:
 		animationSprite.animation = "hit1"

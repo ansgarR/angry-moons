@@ -2,6 +2,8 @@ extends RigidBody2D
 
 onready var animationSprite = $"AnimatedSprite"
 
+export(PackedScene) var explosion_scene
+
 signal clicked
 signal hit_moon
 
@@ -11,16 +13,16 @@ var collisionCounter = 0
 
 func _on_Trash_body_entered(body):
 	collisionCounter += 1
-	if body.is_in_group("Moon"):
+	if body is Moon:
 		emit_signal("hit_moon")
-		queue_free()
+		explode()
 		body.trash_hit()
 	pass
 
 func _on_Trash_body_exited(body):
 	collisionCounter -= 1
 
-func _input_event(viewport, event, shape_idx):
+func _on_MouseArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
@@ -49,9 +51,17 @@ func shoot(impulse : Vector2):
 	happy(true)
 
 func _process(delta):
-	happy(held || collisionCounter==0)
+	happy(held || collisionCounter == 0)
 
 func _physics_process(delta):
 	if held:
 		global_transform.origin = get_global_mouse_position()
 
+func explode():
+	queue_free()
+	var explosion : AnimatedSprite = explosion_scene.instance()
+	explosion.position = position
+	explosion.rotation = rotation
+	explosion.play()
+	get_parent().add_child(explosion)
+		

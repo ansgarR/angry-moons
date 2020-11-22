@@ -7,11 +7,18 @@ onready var rubberband = $"Rubberband"
 
 var held_trash = null
 
+const TRASH_LIMIT = 15
+
 func _ready():
 	randomize()
+	for i in range(TRASH_LIMIT):
+		spawnTrash()
 	
 func _on_TrashSpawnTimer_timeout():
-	if trashGroup.get_child_count() > 10:
+	spawnTrash()
+	
+func spawnTrash():
+	if trashGroup.get_child_count() > TRASH_LIMIT:
 		return
 	
 	var trashInstance : RigidBody2D = trash.instance()

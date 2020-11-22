@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Moon",
+"language": "GDScript",
+"path": "res://Scripts/Moon.gd"
+} ]
 _global_script_class_icons={
-
+"Moon": ""
 }
 
 [application]
