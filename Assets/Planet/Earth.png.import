@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Planet.png-0c76a3650e7a662c510b328ba53c2f78.stex"
+path="res://.import/Earth.png-841114ab80bdbcf822ebfb83201cbf67.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Planet/Planet.png"
-dest_files=[ "res://.import/Planet.png-0c76a3650e7a662c510b328ba53c2f78.stex" ]
+source_file="res://Assets/Planet/Earth.png"
+dest_files=[ "res://.import/Earth.png-841114ab80bdbcf822ebfb83201cbf67.stex" ]
 
 [params]
 

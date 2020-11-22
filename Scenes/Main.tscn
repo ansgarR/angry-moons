@@ -53,5 +53,19 @@ autostart = true
 [node name="MoonGroup" type="Node" parent="."]
 script = ExtResource( 6 )
 moon_scene = ExtResource( 5 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="GUI"]
+margin_left = -2.0
+margin_top = 627.0
+margin_right = 94.0
+margin_bottom = 644.0
+rect_scale = Vector2( 5, 5 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="shot" from="Earth/Rubberband" to="Earth" method="_on_Rubberband_shot"]
 [connection signal="timeout" from="Earth/TrashSpawnTimer" to="Earth" method="_on_TrashSpawnTimer_timeout"]
