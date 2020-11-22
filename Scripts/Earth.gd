@@ -13,7 +13,6 @@ func _ready():
 func _on_TrashSpawnTimer_timeout():
 	if trashGroup.get_child_count() > 10:
 		return
-		#pass
 	
 	var trashInstance : RigidBody2D = trash.instance()
 	trashInstance.position = Vector2(0, 200).rotated(deg2rad(randf() * 360.0))

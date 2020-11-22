@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/Planet/Moon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Moon.gd" type="Script" id=2]
@@ -54,12 +54,134 @@ region = Rect2( 640, 0, 64, 64 )
 atlas = ExtResource( 1 )
 region = Rect2( 704, 0, 64, 64 )
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 1408, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 1472, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 1792, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 1856, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 896, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 960, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 1 )
+region = Rect2( 1088, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 1664, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 1 )
+region = Rect2( 1728, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 1 )
+region = Rect2( 1600, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 1 )
+region = Rect2( 768, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 1 )
+region = Rect2( 832, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 1280, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 1 )
+region = Rect2( 1344, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 1 )
+region = Rect2( 1152, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 1 )
+region = Rect2( 1216, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=32]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"frames": [ SubResource( 2 ) ],
 "loop": false,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": false,
+"name": "hit0",
 "speed": 17.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ) ],
+"loop": false,
+"name": "hit6",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "hit9",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"loop": false,
+"name": "hit2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ) ],
+"loop": false,
+"name": "hit3",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ) ],
+"loop": false,
+"name": "hit8",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "hit7",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": false,
+"name": "hit1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 28 ), SubResource( 29 ) ],
+"loop": false,
+"name": "hit5",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ) ],
+"loop": false,
+"name": "hit4",
+"speed": 5.0
 } ]
 
 [node name="Moon" type="RigidBody2D" groups=[
@@ -77,7 +199,8 @@ scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 6 )
 rotation = 1.5708
 scale = Vector2( 6.5, 6.5 )
-frames = SubResource( 14 )
+frames = SubResource( 32 )
 [connection signal="body_entered" from="." to="." method="_on_Moon_body_entered"]
