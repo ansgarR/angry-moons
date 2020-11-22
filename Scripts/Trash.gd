@@ -1,12 +1,14 @@
 extends RigidBody2D
 
 signal clicked
+signal hit_moon
 
 var held = false
 var original_pos : Vector2
 
 func _on_Trash_body_entered(body):
 	if body.is_in_group("Moon"):
+		emit_signal("hit_moon")
 		queue_free()
 		body.escalate()
 	pass

@@ -4,9 +4,11 @@ onready var animation = $"AnimatedSprite"
 var is_chill = true
 var distance_to_earth
 var angle
+signal crashed_earth
 
 func _on_Moon_body_entered(body:Node):
 	if(body.name == "Earth"):
+		emit_signal("crashed_earth")
 		queue_free()
 	pass
 	
