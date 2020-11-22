@@ -11,10 +11,10 @@ func _process(delta):
 	for trash in trash_children:
 		if trash.get_signal_connection_list("hit_moon").size() == 0:
 			trash.connect("hit_moon", self, "_on_hit_moon")
-	if moon_group_node.get_child_count() > 0:
-		var child_moon = moon_group_node.get_child(0)	
-		if child_moon.get_signal_connection_list("crashed_earth").size() == 0:
-			child_moon.connect("crashed_earth", self, "_on_crashed_earth")
+	var moon_group_children = moon_group_node.get_children()
+	for moon in moon_group_children:
+		if moon.get_signal_connection_list("crashed_earth").size() == 0:
+			moon.connect("crashed_earth", self, "_on_crashed_earth")
 
 func _on_crashed_earth():
 	self.set_text(str(0))
