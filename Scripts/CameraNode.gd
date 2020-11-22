@@ -4,7 +4,7 @@ const rot_speed = 150
 var drag_camera
 var wanted_degrees = rotation_degrees
 
-onready var earth = $"../Earth"
+onready var rubberband = $"../Earth/Rubberband"
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -17,7 +17,7 @@ func _input(event):
 		if event.button_index == BUTTON_LEFT:
 			drag_camera = event.is_pressed()
 	if event is InputEventMouseMotion:
-		if drag_camera and !earth.held_trash:
+		if drag_camera and !rubberband.held_trash:
 			var speed = event.relative.x
 			wanted_degrees -= speed / 4
 			

@@ -1,20 +1,48 @@
 extends Line2D
 
-signal shot(pos) 
+const MAX_FORCE = 150.0
 
-var move_back = false
 var deformed_pos : Vector2
+var held_trash : Trash = null
+var rubber_width = 0
 
-func shoot():
-	deformed_pos = points[0]
-	move_back = true
+func pickup(trash:Trash):
+	if !held_trash:
+		position = trash.position
+		held_trash = trash
+		rubber_width = 0
+		held_trash.pickup()
 
-func _process(delta):
-	if move_back:
-		var point1 : Vector2 = points[0]
-		var point2 : Vector2 = points[1]
-		points[0] = point1.move_toward(point2, delta * 3000)
-		if points[0].distance_to(point2) <= 0:
-			emit_signal("shot", deformed_pos)
-			visible = false
-			move_back = false
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if held_trash and !event.pressed:
+			held_trash.drop()
+			deformed_pos = points[1]
+
+func _physics_process(delta):
+	rubber_width = move_toward(rubber_width, 30, delta * 200)
+	if held_trash:
+		if held_trash.held:
+			var mousePos = get_global_mouse_position()
+			var pullForce = min(mousePos.distance_to(position), MAX_FORCE)
+			var pullDirection = (mousePos - position).normalized()
+			var trashPos = pullDirection * pullForce
+			default_color = Color(pullForce / MAX_FORCE / 2, 0.1, 0.1, 0.8)
+	
+			rotation = pullDirection.angle()
+			held_trash.global_transform.origin = trashPos + held_trash.original_pos
+			visible = true
+			points[0] = Vector2(0, -rubber_width)
+			points[1] = Vector2(pullForce, 0)
+			points[2] = Vector2(0, +rubber_width)
+		else:
+			points[1] = points[1].move_toward(Vector2.ZERO, delta*1000)
+			if points[1].distance_to(Vector2.ZERO) <= 0:
+				var force = deformed_pos.distance_to(Vector2.ZERO) * 5
+				var direction = deformed_pos.rotated(rotation - PI).normalized()
+				held_trash.shoot(direction * min(1000, force))
+				held_trash = null
+			else:
+				held_trash.global_transform.origin = position + points[1].rotated(rotation)
+	else:
+		visible = false

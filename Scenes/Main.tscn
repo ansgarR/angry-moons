@@ -49,9 +49,11 @@ script = ExtResource( 2 )
 [node name="Rubberband" type="Line2D" parent="Earth"]
 position = Vector2( 0, 10 )
 z_index = 2
-points = PoolVector2Array( 0, 0, 0, 0 )
-width = 10.024
-default_color = Color( 0, 0.0862745, 0.54902, 1 )
+points = PoolVector2Array( 0, 0, 0, 0, 0, 0 )
+width = 7.0
+default_color = Color( 0, 0, 0, 1 )
+joint_mode = 2
+antialiased = true
 script = ExtResource( 7 )
 
 [node name="TrashGroup" type="Node" parent="Earth"]
@@ -93,5 +95,4 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="shot" from="Earth/Rubberband" to="Earth" method="_on_Rubberband_shot"]
 [connection signal="timeout" from="Earth/TrashSpawnTimer" to="Earth" method="_on_TrashSpawnTimer_timeout"]
