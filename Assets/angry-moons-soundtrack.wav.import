@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/angry-moons-soundtrack.wav-71614f86e7da8dde73f9b87b8b86ef7d.sample"
+
+[deps]
+
+source_file="res://Assets/angry-moons-soundtrack.wav"
+dest_files=[ "res://.import/angry-moons-soundtrack.wav-71614f86e7da8dde73f9b87b8b86ef7d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
