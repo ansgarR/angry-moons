@@ -9,7 +9,7 @@
 [ext_resource path="res://Scripts/Rubberband.gd" type="Script" id=7]
 [ext_resource path="res://Assets/ARCADECLASSIC.TTF" type="DynamicFontData" id=8]
 [ext_resource path="res://Scripts/GUI.gd" type="Script" id=9]
-[ext_resource path="res://Assets/angry-moons-soundtrack.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/background music.wav" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
