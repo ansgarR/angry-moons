@@ -19,7 +19,9 @@ func _ready():
 	angle = position.angle()
 	
 func trash_hit():
-	is_chill = false
+	if is_chill:
+		is_chill = false
+		
 	hit_counter+=1
 	if hit_counter > 30:
 		animationSprite.animation = "hit9"
@@ -40,7 +42,7 @@ func trash_hit():
 	elif hit_counter > 1:
 		animationSprite.animation = "hit1"
 	else:
-		animationSprite.animation = "hit0"
+		animationSprite.animation = "hit0" 
 	
 	animationSprite.frame = 0
 	animationSprite.play()
@@ -50,4 +52,8 @@ func _physics_process(delta):
 		angle += delta / 10.0
 		var vector = Vector2(distance_to_earth, 0).rotated(angle)
 		global_transform.origin = vector
+		linear_velocity = Vector2(0,0)
+	else:
+		mass += delta * 0.01
+		gravity_scale += delta * 0.01
 	rotation = global_transform.origin.angle()

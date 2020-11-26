@@ -4,7 +4,7 @@ onready var score_label = $"Score"
 onready var high_score_label = $"HighScore"
 
 onready var moon_group_node = $"../MoonGroup"
-onready var trash_group = $"../Earth/TrashGroup"
+onready var trash_group = $"../TrashGroup"
 
 var score = 0
 var high_score = 0

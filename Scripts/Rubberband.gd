@@ -33,7 +33,7 @@ func _physics_process(delta):
 			held_trash.global_transform.origin = trashPos + held_trash.original_pos
 			visible = true
 			points[0] = Vector2(0, -rubber_width)
-			points[1] = Vector2(pullForce, 0)
+			points[1] = Vector2(pullForce + 8, 0)
 			points[2] = Vector2(0, +rubber_width)
 		else:
 			points[1] = points[1].move_toward(Vector2.ZERO, delta*1000)

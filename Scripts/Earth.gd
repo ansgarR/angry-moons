@@ -1,9 +1,8 @@
 extends StaticBody2D
 
 var trash = load("res://Scenes/Trash.tscn")
-onready var trashGroup = get_node("TrashGroup")
-
-onready var rubberband = $"Rubberband"
+onready var trashGroup = $"../TrashGroup"
+onready var rubberband = $"../Rubberband"
 
 const TRASH_LIMIT = 15
 

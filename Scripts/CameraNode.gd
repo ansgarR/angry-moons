@@ -3,8 +3,16 @@ extends Node2D
 const rot_speed = 150
 var drag_camera
 var wanted_degrees = rotation_degrees
+var originalSize : Vector2
 
-onready var rubberband = $"../Earth/Rubberband"
+onready var rubberband = $"../Rubberband"
+onready var camera = $"Camera2D"
+
+
+func _ready():
+	get_tree().get_root().connect("size_changed",self,"onResize")
+	originalSize = Vector2(480, 720)
+	onResize()
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -28,3 +36,11 @@ func _process(delta):
 		wanted_degrees += rot_speed * delta
 	
 	rotation_degrees = move_toward(rotation_degrees, wanted_degrees, delta*400)
+
+func onResize():
+	var currentSize = get_viewport_rect().size
+	var zoomX = originalSize.x / currentSize.x
+	var zoomY = originalSize.y / currentSize.y
+	var zoom = max(zoomX, zoomY)
+	camera.set_zoom(Vector2(zoom,zoom))
+	#camera.position.y = -400.0 * zoom
