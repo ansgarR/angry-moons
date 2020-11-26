@@ -27,7 +27,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if drag_camera and !rubberband.held_trash:
 			var speed = event.relative.x
-			wanted_degrees -= speed / 4
+			wanted_degrees -= speed / 6
 			
 func _process(delta):
 	if Input.is_action_pressed("left"):
@@ -43,4 +43,5 @@ func onResize():
 	var zoomY = originalSize.y / currentSize.y
 	var zoom = max(zoomX, zoomY)
 	camera.set_zoom(Vector2(zoom,zoom))
-	#camera.position.y = -400.0 * zoom
+	var cameraOffset = 400;
+	camera.position.y = -cameraOffset*2 + zoom*cameraOffset

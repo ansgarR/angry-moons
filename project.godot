@@ -28,12 +28,15 @@ _global_script_class_icons={
 
 config/name="angry-moons"
 run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://Assets/icon.png"
+config/icon="res://Assets/icons/1024.png"
+config/macos_native_icon="res://Assets/icons/angrymoons.icns"
+config/windows_native_icon="res://Assets/icons/angrymoons.ico"
 
 [display]
 
 window/size/width=480
 window/size/height=720
+window/handheld/orientation="portrait"
 
 [importer_defaults]
 
