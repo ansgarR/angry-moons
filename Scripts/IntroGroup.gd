@@ -26,3 +26,5 @@ func _on_Timer_timeout():
 func _process(delta):
 	if fade:
 		modulate.a -= delta
+
+# fade = false ist läuft video sequenz also video music wenn fade = false dann game music
