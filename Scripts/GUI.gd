@@ -13,7 +13,14 @@ var savegame = File.new()
 var save_path = "user://angrymoons.save"
 var save_data = {"highscore": 0}
 
+onready var settings_menu_button = $"SettingsMenuButton"
+var popup
+onready var audio_stream_player = $"../AudioStreamPlayer2D"
+
 func _ready():
+	popup = settings_menu_button.get_popup()
+	popup.connect("id_pressed", self, "_on_item_pressed")
+	settings_menu_button.connect("setting_change", self , "on_setting_change")
 	savegame.open(save_path, File.READ)
 	save_data = savegame.get_var()
 	savegame.close()
@@ -53,3 +60,15 @@ func set_score(new : int):
 func set_high_score(new : int):
 	high_score = new
 	high_score_label.set_text("Highscore     " + str(new))
+
+func change_setting(id, value):
+	if id == 0:
+		if value == true and !audio_stream_player.playing:
+			audio_stream_player.play()
+		if value == false and audio_stream_player.playing:
+			audio_stream_player.stop()
+
+func _on_item_pressed(ID):
+	var item_checked = popup.is_item_checked(ID)
+	popup.set_item_checked(ID, !item_checked)
+	change_setting(ID, !item_checked)
