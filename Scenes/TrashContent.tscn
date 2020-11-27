@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends RigidBody2D
+
+onready var sprite : Sprite = $\"Sprite\"
+
+const contents = [
+	preload(\"res://Assets/Trash/Content/JunkBonbon.png\"),
+	preload(\"res://Assets/Trash/Content/JunkBottle.png\"),
+	preload(\"res://Assets/Trash/Content/JunkCan.png\"),
+	preload(\"res://Assets/Trash/Content/JunkPizzaslice.png\"),
+	preload(\"res://Assets/Trash/Content/JunkTaschentuch.png\"),
+	preload(\"res://Assets/Trash/Content/JunkTrinkpäckchen.png\")
+]
+
+func _ready():
+	randomize()
+	sprite.texture = contents[randi()%contents.size()-1]
+
+func _process(delta):
+	sprite.modulate.a -= delta/3
+	if sprite.modulate.a <= 0:
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.7673, 2.93065 )
+
+[node name="TrashContent" type="RigidBody2D"]
+collision_layer = 16384
+collision_mask = 16384
+mass = 0.24
+script = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]

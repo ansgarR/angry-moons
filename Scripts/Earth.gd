@@ -25,4 +25,5 @@ func spawnTrash():
 	trashGroup.add_child(trashInstance)
 
 func _on_Trash_clicked(trash):
-	rubberband.pickup(trash)
+	if !trash.dead:
+		rubberband.pickup(trash)

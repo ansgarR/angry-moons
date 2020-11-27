@@ -10,7 +10,8 @@ radius = 21.0529
 [node name="Earth" type="StaticBody2D" groups=[
 "Earth",
 ]]
-collision_mask = 0
+collision_layer = 16385
+collision_mask = 16384
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1.635, 1.635 )
@@ -27,8 +28,8 @@ scale = Vector2( 50, 50 )
 space_override = 1
 gravity_point = true
 gravity_vec = Vector2( 0, 0 )
-collision_layer = 3
-collision_mask = 3
+collision_layer = 16387
+collision_mask = 16387
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 scale = Vector2( 10, 10 )

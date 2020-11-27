@@ -1,0 +1,28 @@
+extends Control
+
+onready var animation : AnimatedSprite = $"Animation"
+onready var timer : Timer = $"Timer"
+
+var introData : Dictionary
+var fade = false
+
+func _ready():
+	var file = File.new()
+	file.open("res://Assets/Intro.json", file.READ)
+	var text = file.get_as_text()
+	file.close()
+	introData = JSON.parse(text).result
+	
+	timer.start()
+
+func _on_Timer_timeout():
+	if(animation.frame == 135):
+		fade = true
+	animation.frame += 1
+	var frameData = introData["frames"]["Intro " + str(animation.frame) + ".aseprite"]
+	timer.wait_time = frameData["duration"] / 1100.0
+	timer.start()
+
+func _process(delta):
+	if fade:
+		modulate.a -= delta
