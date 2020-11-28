@@ -9,6 +9,7 @@ onready var trash_group = $"../TrashGroup"
 var score = 0
 var high_score = 0
 var music_on = true
+var soundfx_on = true
 
 var savegame = File.new()
 var save_path = "user://angrymoons.save"
@@ -26,10 +27,12 @@ func _ready():
 	if save_data:
 		high_score = save_data["highscore"]
 		music_on = save_data["music_on"]
+		soundfx_on = save_data["soundfx_on"]
 	else:
-		save_data = {"highscore": 0, "music_on" : true}
+		save_data = {"highscore": 0, "music_on": true, "soundfx_on": true}
 	set_high_score(high_score)
 	change_setting(0, music_on)
+	change_setting(1, soundfx_on)
 	
 func _process(delta):
 	var trash_children = trash_group.get_children()
@@ -69,10 +72,16 @@ func change_setting(id, checked):
 		if !checked and audio_stream_player.playing:
 			audio_stream_player.stop()
 		save_data["music_on"] = checked
-		savegame.open(save_path, File.WRITE)
-		savegame.store_var(save_data)
-		savegame.close()
-		popup.set_item_checked(id, checked)
+	if id == 1:
+		if checked:
+			soundfx_on = true
+		else:
+			soundfx_on = false
+		save_data["soundfx_on"] = checked
+	savegame.open(save_path, File.WRITE)
+	savegame.store_var(save_data)
+	savegame.close()
+	popup.set_item_checked(id, checked)
 
 func _on_item_pressed(ID):
 	var item_checked = popup.is_item_checked(ID)

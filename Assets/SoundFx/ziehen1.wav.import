@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ziehen1.wav-30c844fed46bca810b8668b2e4320cbc.sample"
+
+[deps]
+
+source_file="res://Assets/SoundFx/ziehen1.wav"
+dest_files=[ "res://.import/ziehen1.wav-30c844fed46bca810b8668b2e4320cbc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

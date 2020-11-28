@@ -6,6 +6,8 @@ onready var timer : Timer = $"Timer"
 var introData : Dictionary
 var fade = false
 
+signal intro_ended
+
 func _ready():
 	var file = File.new()
 	file.open("res://Assets/Intro.json", file.READ)
@@ -18,6 +20,8 @@ func _ready():
 func _on_Timer_timeout():
 	if(animation.frame == 135):
 		fade = true
+		print("sending intro ended signal")
+		emit_signal("intro_ended")
 	animation.frame += 1
 	var frameData = introData["frames"]["Intro " + str(animation.frame) + ".aseprite"]
 	timer.wait_time = frameData["duration"] / 1100.0
@@ -27,4 +31,4 @@ func _process(delta):
 	if fade:
 		modulate.a -= delta
 
-# fade = false ist läuft video sequenz also video music wenn fade = false dann game music
+# fade = false ist läuft video sequenz also video music wenn fade = true dann game music
