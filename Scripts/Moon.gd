@@ -2,6 +2,9 @@ extends RigidBody2D
 class_name Moon
 
 onready var animationSprite = $"AnimatedSprite"
+onready var moon_sound_fx = $"../../LunarSoundFx"
+var earth_crash_sound = load("res://Assets/SoundFx/mond auf erde.wav")
+var trash_hit_sound = load("res://Assets/SoundFx/treffer mond 3.wav")
 var is_chill = true
 var distance_to_earth
 var angle
@@ -11,6 +14,8 @@ var hit_counter = 0
 func _on_Moon_body_entered(body:Node):
 	if(body.name == "Earth"):
 		emit_signal("crashed_earth")
+		moon_sound_fx.set_stream(earth_crash_sound)
+		moon_sound_fx.play()
 		queue_free()
 	pass
 	
@@ -19,6 +24,8 @@ func _ready():
 	angle = position.angle()
 	
 func trash_hit():
+	moon_sound_fx.set_stream(trash_hit_sound)
+	moon_sound_fx.play()
 	if is_chill:
 		is_chill = false
 		

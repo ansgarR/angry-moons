@@ -691,5 +691,11 @@ one_shot = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
 script = ExtResource( 13 )
+
+[node name="LunarSoundFx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="RubberbandSoundFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="TrashSoundFx" type="AudioStreamPlayer2D" parent="."]
 [connection signal="timeout" from="TrashSpawnTimer" to="Earth" method="_on_TrashSpawnTimer_timeout"]
 [connection signal="timeout" from="GUI/IntroGroup/Timer" to="GUI/IntroGroup" method="_on_Timer_timeout"]
