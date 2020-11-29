@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal camera_smoothing_reset_timer
+
 onready var score_label = $"Score"
 onready var high_score_label = $"HighScore"
 
@@ -29,6 +31,7 @@ onready var audio_stream_player = $"../AudioStreamPlayer2D"
 func _ready():
 	connectEarthAnimationSpriteSignals()
 	connectSettingsMenuButtonSignals()
+	connectRetryButtonSignals()
 	savegame.open(save_path, File.READ)
 	save_data = savegame.get_var()
 	savegame.close()
@@ -57,7 +60,7 @@ func _on_crashed_earth():
 	var camera_position : Vector2 = Vector2(0, -200)
 	camera2d.set_enable_follow_smoothing(true)
 	camera2d.set_position(camera_position)
-	camera2d.reset_smoothing()
+	#emit_signal("camera_smoothing_reset_timer") could be used to reset smoothing after given time
 	earth_animated_sprite.play()
 	save_data["highscore"] = high_score
 	savegame.open(save_path, File.WRITE)
@@ -115,3 +118,14 @@ func connectEarthAnimationSpriteSignals():
 
 func _on_earth_animation_finished():
 	retry_button.set_visible(true)
+
+func connectRetryButtonSignals():
+	retry_button.connect("pressed", self, "_on_retry_button_pressed")
+
+func _on_retry_button_pressed():
+	var camera_position : Vector2 = Vector2(0, -400)
+	camera2d.set_position(camera_position)
+	camera2d.set_enable_follow_smoothing(false) # this doesnt work properly see next line
+	#emit_signal("camera_smoothing_reset_timer") could be used to reset smoothing after given time
+	earth_animated_sprite.set_frame(0)
+	earth_animated_sprite.stop()

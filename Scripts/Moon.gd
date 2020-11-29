@@ -5,6 +5,7 @@ onready var gui = $"../../GUI"
 onready var animationSprite = $"AnimatedSprite"
 onready var moon_sound_fx = $"../../LunarSoundFx"
 onready var trash_group = $"../../TrashGroup"
+onready var retry_button = $"../../GUI/RetryButton"
 var earth_crash_sound = load("res://Assets/SoundFx/mond auf erde.wav")
 var trash_hit_sound = load("res://Assets/SoundFx/treffer mond 3.wav")
 var is_chill = true
@@ -25,7 +26,9 @@ func _on_Moon_body_entered(body:Node):
 			add_collision_exception_with(trash)
 
 func _ready():
+	retry_button.connect("pressed", self, "_on_retry_button_pressed")
 	distance_to_earth = position.distance_to(Vector2(0, 0))
+	
 	angle = position.angle()
 	
 func trash_hit():
@@ -70,3 +73,7 @@ func _physics_process(delta):
 		mass += delta * 0.01
 		gravity_scale += delta * 0.01
 	rotation = global_transform.origin.angle()
+
+func _on_retry_button_pressed():
+	retry_button.set_visible(false)
+	queue_free()
