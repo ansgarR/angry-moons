@@ -1,6 +1,7 @@
 extends RigidBody2D
 class_name Moon
 
+onready var gui = $"../../GUI"
 onready var animationSprite = $"AnimatedSprite"
 onready var moon_sound_fx = $"../../LunarSoundFx"
 onready var trash_group = $"../../TrashGroup"
@@ -16,8 +17,9 @@ func _on_Moon_body_entered(body:Node):
 	if(body.name == "Earth"):
 		print("emmiting crashed earth")
 		emit_signal("crashed_earth")
-		moon_sound_fx.set_stream(earth_crash_sound)
-		moon_sound_fx.play()
+		if gui.soundfx_on:
+			moon_sound_fx.set_stream(earth_crash_sound)
+			moon_sound_fx.play()
 		var trash_children = trash_group.get_children()
 		for trash in trash_children:
 			add_collision_exception_with(trash)
@@ -27,8 +29,9 @@ func _ready():
 	angle = position.angle()
 	
 func trash_hit():
-	moon_sound_fx.set_stream(trash_hit_sound)
-	moon_sound_fx.play()
+	if gui.soundfx_on:
+		moon_sound_fx.set_stream(trash_hit_sound)
+		moon_sound_fx.play()
 	if is_chill:
 		is_chill = false
 		

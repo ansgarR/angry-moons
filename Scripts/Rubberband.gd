@@ -2,6 +2,7 @@ extends Line2D
 
 const MAX_FORCE = 150.0
 
+onready var gui = $"../GUI"
 var rubberband_sound = load("res://Assets/SoundFx/ziehen1.wav")
 var shoot_trash_sound = load("res://Assets/SoundFx/sack stimme beim abflug.wav")
 onready var rubberband_sound_fx = $"../RubberbandSoundFX"
@@ -13,8 +14,9 @@ var rubber_width = 0
 
 func pickup(trash:Trash):
 	if !held_trash:
-		rubberband_sound_fx.set_stream(rubberband_sound)
-		rubberband_sound_fx.play()
+		if gui.soundfx_on:
+			rubberband_sound_fx.set_stream(rubberband_sound)
+			rubberband_sound_fx.play()
 		position = trash.position
 		held_trash = trash
 		rubber_width = 0
@@ -23,8 +25,9 @@ func pickup(trash:Trash):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_trash and !event.pressed:
-			trash_sound_fx.set_stream(shoot_trash_sound)
-			trash_sound_fx.play()
+			if gui.soundfx_on:
+				trash_sound_fx.set_stream(shoot_trash_sound)
+				trash_sound_fx.play()
 			held_trash.drop()
 			deformed_pos = points[1]
 

@@ -1,5 +1,6 @@
 extends AudioStreamPlayer2D
 
+onready var gui = $"../GUI"
 onready var intro_group = $"../GUI/IntroGroup"
 var intro_music = load("res://Assets/Music/Music Intro.wav")
 var game_music = load("res://Assets/Music/Music Gameplay.wav")
@@ -12,4 +13,5 @@ func on_intro_ended():
 	print("caught intro end signal") #this control needs to be optimized
 	if game_music != get_stream():
 		set_stream(game_music)
-		play()
+		if gui.music_on:
+			play()

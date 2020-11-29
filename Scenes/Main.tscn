@@ -706,7 +706,7 @@ margin_top = 25.0318
 margin_right = -31.7898
 margin_bottom = 106.032
 custom_fonts/font = SubResource( 6 )
-text = "Highscore     2"
+text = "Highscore     0"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
