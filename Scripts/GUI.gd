@@ -6,6 +6,8 @@ onready var high_score_label = $"HighScore"
 onready var moon_group_node = $"../MoonGroup"
 onready var trash_group = $"../TrashGroup"
 
+onready var earth_animated_sprite = $"../Earth/EarthAnimatedSprite"
+
 onready var camera2d : Camera2D = $"../CameraNode/Camera2D"
 
 var score = 0
@@ -53,6 +55,7 @@ func _on_crashed_earth():
 	camera2d.set_enable_follow_smoothing(true)
 	camera2d.set_position(camera_position)
 	camera2d.reset_smoothing()
+	earth_animated_sprite.play()
 	save_data["highscore"] = high_score
 	savegame.open(save_path, File.WRITE)
 	savegame.store_var(save_data)
