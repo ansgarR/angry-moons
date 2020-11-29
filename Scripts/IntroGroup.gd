@@ -2,6 +2,7 @@ extends Control
 
 onready var animation : AnimatedSprite = $"Animation"
 onready var timer : Timer = $"Timer"
+onready var skip_button = $"SkipButton"
 
 var introData : Dictionary
 var fade = false
@@ -9,6 +10,7 @@ var fade = false
 signal intro_ended
 
 func _ready():
+	skip_button.connect("pressed", self, "_on_skip_button_pressed")
 	var file = File.new()
 	file.open("res://Assets/Intro.json", file.READ)
 	var text = file.get_as_text()
@@ -31,4 +33,6 @@ func _process(delta):
 	if fade:
 		modulate.a -= delta
 
+func _on_skip_button_pressed():
+	fade = true
 # fade = false ist läuft video sequenz also video music wenn fade = true dann game music

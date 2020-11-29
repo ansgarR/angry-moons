@@ -3,6 +3,7 @@ class_name Moon
 
 onready var animationSprite = $"AnimatedSprite"
 onready var moon_sound_fx = $"../../LunarSoundFx"
+onready var trash_group = $"../../TrashGroup"
 var earth_crash_sound = load("res://Assets/SoundFx/mond auf erde.wav")
 var trash_hit_sound = load("res://Assets/SoundFx/treffer mond 3.wav")
 var is_chill = true
@@ -13,12 +14,14 @@ var hit_counter = 0
 
 func _on_Moon_body_entered(body:Node):
 	if(body.name == "Earth"):
+		print("emmiting crashed earth")
 		emit_signal("crashed_earth")
 		moon_sound_fx.set_stream(earth_crash_sound)
 		moon_sound_fx.play()
-		queue_free()
-	pass
-	
+		var trash_children = trash_group.get_children()
+		for trash in trash_children:
+			add_collision_exception_with(trash)
+
 func _ready():
 	distance_to_earth = position.distance_to(Vector2(0, 0))
 	angle = position.angle()
