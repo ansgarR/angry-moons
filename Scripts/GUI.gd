@@ -6,7 +6,9 @@ onready var high_score_label = $"HighScore"
 onready var moon_group_node = $"../MoonGroup"
 onready var trash_group = $"../TrashGroup"
 
-onready var earth_animated_sprite = $"../Earth/EarthAnimatedSprite"
+onready var retry_button = $"./RetryButton"
+
+onready var earth_animated_sprite : AnimatedSprite = $"../Earth/EarthAnimatedSprite"
 
 onready var camera2d : Camera2D = $"../CameraNode/Camera2D"
 
@@ -25,6 +27,7 @@ var popup : Popup
 onready var audio_stream_player = $"../AudioStreamPlayer2D"
 
 func _ready():
+	connectEarthAnimationSpriteSignals()
 	connectSettingsMenuButtonSignals()
 	savegame.open(save_path, File.READ)
 	save_data = savegame.get_var()
@@ -81,11 +84,9 @@ func change_setting(id, checked):
 		if !checked and audio_stream_player.playing:
 			audio_stream_player.stop()
 		save_data["music_on"] = checked
+		music_on = checked
 	if id == 1:
-		if checked:
-			soundfx_on = true
-		else:
-			soundfx_on = false
+		soundfx_on = checked
 		save_data["soundfx_on"] = checked
 	savegame.open(save_path, File.WRITE)
 	savegame.store_var(save_data)
@@ -109,3 +110,8 @@ func _on_popup_hide():
 func _on_settings_button_about_to_show():
 	settings_menu_animation.play()
 
+func connectEarthAnimationSpriteSignals():
+	earth_animated_sprite.connect("animation_finished", self, "_on_earth_animation_finished")
+
+func _on_earth_animation_finished():
+	retry_button.set_visible(true)
