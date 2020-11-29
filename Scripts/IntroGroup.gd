@@ -35,4 +35,5 @@ func _process(delta):
 
 func _on_skip_button_pressed():
 	fade = true
+	emit_signal("intro_ended")
 # fade = false ist läuft video sequenz also video music wenn fade = true dann game music
