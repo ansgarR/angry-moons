@@ -18,7 +18,8 @@ var save_path = "user://angrymoons.save"
 var save_data
 
 onready var settings_menu_button = $"SettingsMenuButton"
-var popup
+onready var settings_menu_animation : AnimatedSprite = $"SettingsMenuButton/SettingsButtonAnimatedSprite"
+var popup : Popup
 onready var audio_stream_player = $"../AudioStreamPlayer2D"
 
 func _ready():
@@ -93,5 +94,15 @@ func _on_item_pressed(ID):
 	change_setting(ID, !item_checked)
 
 func connectSettingsMenuButtonSignals():
+	settings_menu_button.connect("about_to_show", self, "_on_settings_button_about_to_show")
+	settings_menu_button.set_button_icon(settings_menu_animation)
 	popup = settings_menu_button.get_popup()
+	popup.connect("popup_hide", self, "_on_popup_hide")
 	popup.connect("id_pressed", self, "_on_item_pressed")
+
+func _on_popup_hide():
+	settings_menu_animation.play("0" ,true)
+
+func _on_settings_button_about_to_show():
+	settings_menu_animation.play()
+
