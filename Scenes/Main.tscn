@@ -712,6 +712,7 @@ margin_right = 446.5
 margin_bottom = 23.0
 custom_fonts/font = SubResource( 144 )
 text = "Skip Intro"
+flat = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
