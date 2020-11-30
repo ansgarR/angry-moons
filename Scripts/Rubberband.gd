@@ -5,6 +5,7 @@ const MAX_FORCE = 150.0
 onready var gui = $"../GUI"
 var rubberband_sound = load("res://Assets/SoundFx/ziehen1.wav")
 var shoot_trash_sound = load("res://Assets/SoundFx/sack stimme beim abflug.wav")
+var shoot_trash_sound_2 = load("res://Assets/SoundFx/sack stimme beim abflug 2.wav") # yet unused
 onready var rubberband_sound_fx = $"../RubberbandSoundFX"
 onready var trash_sound_fx = $"../TrashSoundFx" #lol xXx
 

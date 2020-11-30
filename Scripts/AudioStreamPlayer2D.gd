@@ -2,7 +2,8 @@ extends AudioStreamPlayer2D
 
 onready var gui = $"../GUI"
 onready var intro_group = $"../GUI/IntroGroup"
-var intro_music = load("res://Assets/Music/Music Intro.wav")
+#var intro_music = load("res://Assets/Music/Music Intro.wav")
+var intro_music = load("res://Assets/Music/Music Intro gebrabbel.wav")
 var game_music = load("res://Assets/Music/Music Gameplay.wav")
 
 func _ready():
