@@ -10,9 +10,7 @@ onready var trash_group = $"../TrashGroup"
 
 onready var retry_button = $"./RetryButton"
 
-onready var earth_animated_sprite : AnimatedSprite = $"../Earth/EarthAnimatedSprite"
-
-onready var camera2d : Camera2D = $"../CameraNode/Camera2D"
+onready var camera : CameraNode = $"../CameraNode"
 
 var score = 0
 var high_score = 0
@@ -29,7 +27,6 @@ var popup : Popup
 onready var audio_stream_player = $"../AudioStreamPlayer2D"
 
 func _ready():
-	connectEarthAnimationSpriteSignals()
 	connectSettingsMenuButtonSignals()
 	connectRetryButtonSignals()
 	savegame.open(save_path, File.READ)
@@ -55,13 +52,17 @@ func _process(delta):
 		if moon.get_signal_connection_list("crashed_earth").size() == 0:
 			moon.connect("crashed_earth", self, "_on_crashed_earth")
 
-func _on_crashed_earth():
+func _on_crashed_earth(moon : Moon):
+	camera.focusEarth(moon)
+	
+	var retryButtonTimer : Timer = Timer.new()
+	retryButtonTimer.one_shot = true
+	retryButtonTimer.wait_time = 1
+	retryButtonTimer.connect("timeout", self, "_on_retrybutton_timeout")
+	add_child(retryButtonTimer)
+	retryButtonTimer.start()
+	
 	set_high_score(max(score, high_score))
-	var camera_position : Vector2 = Vector2(0, -200)
-	camera2d.set_enable_follow_smoothing(true)
-	camera2d.set_position(camera_position)
-	#emit_signal("camera_smoothing_reset_timer") could be used to reset smoothing after given time
-	earth_animated_sprite.play()
 	save_data["highscore"] = high_score
 	savegame.open(save_path, File.WRITE)
 	savegame.store_var(save_data)
@@ -82,9 +83,7 @@ func set_high_score(new : int):
 
 func change_setting(id, checked):
 	if id == 0:
-		if checked:
-			audio_stream_player.volume_db = 1
-		else:
+		if !checked:
 			audio_stream_player.volume_db = -5000
 		save_data["music_on"] = checked
 		music_on = checked
@@ -113,19 +112,12 @@ func _on_popup_hide():
 func _on_settings_button_about_to_show():
 	settings_menu_animation.play()
 
-func connectEarthAnimationSpriteSignals():
-	earth_animated_sprite.connect("animation_finished", self, "_on_earth_animation_finished")
-
-func _on_earth_animation_finished():
-	retry_button.set_visible(true)
-
 func connectRetryButtonSignals():
 	retry_button.connect("pressed", self, "_on_retry_button_pressed")
 
 func _on_retry_button_pressed():
-	var camera_position : Vector2 = Vector2(0, -400)
-	camera2d.set_position(camera_position)
-	camera2d.set_enable_follow_smoothing(false) # this doesnt work properly see next line
-	#emit_signal("camera_smoothing_reset_timer") could be used to reset smoothing after given time
-	earth_animated_sprite.set_frame(0)
-	earth_animated_sprite.stop()
+	camera.focusMoon()
+	retry_button.visible = false
+
+func _on_retrybutton_timeout():
+	retry_button.visible = true

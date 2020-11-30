@@ -17,7 +17,7 @@ var hit_counter = 0
 func _on_Moon_body_entered(body:Node):
 	if(body.name == "Earth"):
 		print("emmiting crashed earth")
-		emit_signal("crashed_earth")
+		emit_signal("crashed_earth", self)
 		if gui.soundfx_on:
 			moon_sound_fx.set_stream(earth_crash_sound)
 			moon_sound_fx.play()
@@ -31,6 +31,7 @@ func _ready():
 	distance_to_earth = position.distance_to(Vector2(0, 0))
 	
 	angle = position.angle()
+	trash_hit()
 	
 func trash_hit():
 	if gui.soundfx_on:
