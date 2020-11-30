@@ -31,7 +31,6 @@ func _ready():
 	distance_to_earth = position.distance_to(Vector2(0, 0))
 	
 	angle = position.angle()
-	trash_hit()
 	
 func trash_hit():
 	if gui.soundfx_on:

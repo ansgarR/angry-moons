@@ -28,12 +28,12 @@ func pickup(trash:Trash):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_trash and !event.pressed:
-			if gui.soundfx_on:
+			held_trash.drop()
+			deformed_pos = points[1]
+			if deformed_pos.length() > 40 && gui.soundfx_on:
 				randomize()
 				trash_sound_fx.set_stream(shoot_trash_sounds[randi() % shoot_trash_sounds.size()])
 				trash_sound_fx.play()
-			held_trash.drop()
-			deformed_pos = points[1]
 
 func _physics_process(delta):
 	rubber_width = move_toward(rubber_width, 30, delta * 200)

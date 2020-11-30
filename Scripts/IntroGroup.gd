@@ -18,7 +18,7 @@ func _ready():
 	introData = JSON.parse(text).result
 	
 	timer.start()
-	_on_skip_button_pressed()
+
 
 func _on_Timer_timeout():
 	if(animation.frame == 135):

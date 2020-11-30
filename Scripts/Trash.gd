@@ -28,6 +28,7 @@ func _on_MouseArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
+				print("clicked trash")
 				emit_signal("clicked", self)
 
 func pickup():

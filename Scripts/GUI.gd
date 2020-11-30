@@ -85,6 +85,8 @@ func change_setting(id, checked):
 	if id == 0:
 		if !checked:
 			audio_stream_player.volume_db = -5000
+		else:
+			audio_stream_player.volume_db = -4
 		save_data["music_on"] = checked
 		music_on = checked
 	if id == 1:
