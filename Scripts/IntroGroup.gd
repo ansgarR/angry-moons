@@ -2,7 +2,7 @@ extends Control
 
 onready var animation : AnimatedSprite = $"Animation"
 onready var timer : Timer = $"Timer"
-onready var skip_button = $"SkipButton"
+onready var skip_button = $"../SkipButton"
 
 var introData : Dictionary
 var fade = false
@@ -21,9 +21,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	if(animation.frame == 135):
-		fade = true
-		print("sending intro ended signal")
-		emit_signal("intro_ended")
+		_on_skip_button_pressed()
 	animation.frame += 1
 	var frameData = introData["frames"]["Intro " + str(animation.frame) + ".aseprite"]
 	timer.wait_time = frameData["duration"] / 1100.0
@@ -34,5 +32,7 @@ func _process(delta):
 		modulate.a -= delta
 
 func _on_skip_button_pressed():
-	fade = true
-	emit_signal("intro_ended")
+	if !fade:
+		fade = true
+		emit_signal("intro_ended")
+		skip_button.queue_free()

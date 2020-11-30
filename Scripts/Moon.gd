@@ -21,9 +21,10 @@ func _on_Moon_body_entered(body:Node):
 		if gui.soundfx_on:
 			moon_sound_fx.set_stream(earth_crash_sound)
 			moon_sound_fx.play()
-		var trash_children = trash_group.get_children()
-		for trash in trash_children:
-			add_collision_exception_with(trash)
+		collision_layer = 0
+		collision_mask = 0
+		angular_velocity = 0
+		linear_velocity = Vector2.ZERO
 
 func _ready():
 	retry_button.connect("pressed", self, "_on_retry_button_pressed")

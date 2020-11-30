@@ -612,11 +612,12 @@ animations = [ {
 "speed": 100.0
 } ]
 
-[sub_resource type="DynamicFont" id=147]
-font_data = ExtResource( 8 )
-
 [sub_resource type="DynamicFont" id=148]
 size = 27
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=147]
+size = 20
 font_data = ExtResource( 8 )
 
 [node name="Main" type="Node2D"]
@@ -735,14 +736,6 @@ centered = false
 [node name="Timer" type="Timer" parent="GUI/IntroGroup"]
 one_shot = true
 
-[node name="SkipButton" type="Button" parent="GUI/IntroGroup"]
-margin_left = 351.5
-margin_right = 446.5
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 147 )
-text = "Skip Intro"
-flat = true
-
 [node name="RetryButton" type="Button" parent="GUI"]
 visible = false
 margin_top = 338.0
@@ -750,6 +743,22 @@ margin_right = 480.0
 margin_bottom = 417.0
 custom_fonts/font = SubResource( 148 )
 text = "Retry"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkipButton" type="Button" parent="GUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -127.5
+margin_top = -47.5
+margin_right = -13.5
+margin_bottom = -20.5
+custom_fonts/font = SubResource( 147 )
+text = "Skip Intro"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
