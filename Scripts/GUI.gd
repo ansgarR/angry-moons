@@ -29,6 +29,7 @@ var popup : Popup
 onready var audio_stream_player = $"../AudioStreamPlayer2D"
 
 func _ready():
+	audio_stream_player.play()
 	connectEarthAnimationSpriteSignals()
 	connectSettingsMenuButtonSignals()
 	connectRetryButtonSignals()
@@ -82,10 +83,10 @@ func set_high_score(new : int):
 
 func change_setting(id, checked):
 	if id == 0:
-		if checked and !audio_stream_player.playing:
-			audio_stream_player.play()
-		if !checked and audio_stream_player.playing:
-			audio_stream_player.stop()
+		if checked:
+			audio_stream_player.volume_db = 1
+		else:
+			audio_stream_player.volume_db = -5000
 		save_data["music_on"] = checked
 		music_on = checked
 	if id == 1:
