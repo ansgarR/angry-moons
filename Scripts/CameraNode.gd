@@ -14,11 +14,11 @@ onready var camera = $"Camera2D"
 onready var earth_animated_sprite : AnimatedSprite = $"../Earth/EarthAnimatedSprite"
 
 func _ready():
-	get_tree().get_root().connect("size_changed",self,"onResize")
+	get_tree().get_root().connect("size_changed", self, "onResize")
 	originalSize = Vector2(480, 720)
 	focusMoon()
 
-func _unhandled_input(event):
+func _input(event):
 	if focus_earth:
 		return
 	if event is InputEventMouseButton:
@@ -48,10 +48,14 @@ func _process(delta):
 	camera.set_zoom(Vector2(zoom,zoom))
 	
 	var w = wanted_degrees
-	if (w - rotation_degrees) > 180:
-		w = w - 360.0
+	var d = (w - rotation_degrees) > 180
+	if d:
+		w -= 360.0
 	
 	rotation_degrees = move_toward(rotation_degrees, w, delta * 400)
+	if d:
+		rotation_degrees += 360.0
+	
 	var calc_wanted_y = -wanted_y*2 + zoom*wanted_y
 	var curr_y = camera.position.y
 	camera.position.y = move_toward(curr_y, calc_wanted_y, max(abs(calc_wanted_y-curr_y),10)*delta*10)
