@@ -12,7 +12,6 @@ func _ready():
 	volume_db = 12
 
 func on_intro_ended():
-	print("caught intro end signal") #this control needs to be optimized
 	if game_music != get_stream():
 		set_stream(game_music)
 		volume_db = 1
