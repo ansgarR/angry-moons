@@ -776,6 +776,9 @@ centered = false
 [node name="Timer" type="Timer" parent="GUI/IntroGroup"]
 one_shot = true
 
+[node name="StartDelay" type="Timer" parent="GUI/IntroGroup"]
+one_shot = true
+
 [node name="RetryButton" type="Button" parent="GUI"]
 visible = false
 anchor_left = 0.5
@@ -828,4 +831,7 @@ volume_db = -3.025
 
 [node name="TrashSoundFx" type="AudioStreamPlayer2D" parent="."]
 [connection signal="timeout" from="TrashSpawnTimer" to="Earth" method="_on_TrashSpawnTimer_timeout"]
+[connection signal="intro_ended" from="GUI/IntroGroup" to="AudioStreamPlayer2D" method="_on_IntroGroup_intro_ended"]
+[connection signal="intro_started" from="GUI/IntroGroup" to="AudioStreamPlayer2D" method="_on_IntroGroup_intro_started"]
 [connection signal="timeout" from="GUI/IntroGroup/Timer" to="GUI/IntroGroup" method="_on_Timer_timeout"]
+[connection signal="timeout" from="GUI/IntroGroup/StartDelay" to="GUI/IntroGroup" method="_on_StartDelay_timeout"]

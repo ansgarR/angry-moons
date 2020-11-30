@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Music Intro gebrabbel.ogg-9eb2d15ff4bd59d4b85a7cf219
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

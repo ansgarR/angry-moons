@@ -3,10 +3,11 @@ extends Control
 onready var animation : AnimatedSprite = $"Animation"
 onready var timer : Timer = $"Timer"
 onready var skip_button = $"../SkipButton"
-
+onready var startDelay : Timer = $"StartDelay"
 var introData : Dictionary
 var fade = false
 
+signal intro_started
 signal intro_ended
 
 func _ready():
@@ -17,7 +18,7 @@ func _ready():
 	file.close()
 	introData = JSON.parse(text).result
 	
-	timer.start()
+	startDelay.start()
 
 
 func _on_Timer_timeout():
@@ -37,3 +38,7 @@ func _on_skip_button_pressed():
 		fade = true
 		emit_signal("intro_ended")
 		skip_button.queue_free()
+
+func _on_StartDelay_timeout():
+	timer.start()
+	emit_signal("intro_started")

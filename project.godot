@@ -36,7 +36,7 @@ config/name="angry-moons"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://Assets/icons/1024.png"
 config/macos_native_icon="res://Assets/icons/angrymoons.icns"
-config/windows_native_icon="res://Assets/icons/angrymoons.ico"
+config/windows_native_icon="res://Assets/icons/icon.ico"
 
 [display]
 
