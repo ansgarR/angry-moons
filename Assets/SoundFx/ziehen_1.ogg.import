@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ziehen_1.ogg-f63e490dfaa233adaa8aca995c62d795.oggstr"
+
+[deps]
+
+source_file="res://Assets/SoundFx/ziehen_1.ogg"
+dest_files=[ "res://.import/ziehen_1.ogg-f63e490dfaa233adaa8aca995c62d795.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

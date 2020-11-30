@@ -6,8 +6,8 @@ onready var animationSprite = $"AnimatedSprite"
 onready var moon_sound_fx = $"../../LunarSoundFx"
 onready var trash_group = $"../../TrashGroup"
 onready var retry_button = $"../../GUI/RetryButton"
-var earth_crash_sound = load("res://Assets/SoundFx/mond auf erde leiser.wav")
-var trash_hit_sound = load("res://Assets/SoundFx/treffer mond 3.wav")
+var earth_crash_sound = load("res://Assets/SoundFx/earth_hit.ogg")
+var trash_hit_sound = load("res://Assets/SoundFx/moon_hit.ogg")
 var is_chill = true
 var distance_to_earth
 var angle

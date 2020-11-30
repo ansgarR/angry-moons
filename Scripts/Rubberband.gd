@@ -3,9 +3,11 @@ extends Line2D
 const MAX_FORCE = 150.0
 
 onready var gui = $"../GUI"
-var rubberband_sound = load("res://Assets/SoundFx/ziehen1.wav")
-var shoot_trash_sound = load("res://Assets/SoundFx/sack stimme beim abflug.wav")
-var shoot_trash_sound_2 = load("res://Assets/SoundFx/sack stimme beim abflug 2.wav") # yet unused
+var rubberband_sound = preload("res://Assets/SoundFx/ziehen_1.ogg")
+var shoot_trash_sounds = [
+	preload("res://Assets/SoundFx/sack_1.ogg"),
+	preload("res://Assets/SoundFx/sack_2.ogg")
+]
 onready var rubberband_sound_fx = $"../RubberbandSoundFX"
 onready var trash_sound_fx = $"../TrashSoundFx" #lol xXx
 
@@ -27,7 +29,8 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_trash and !event.pressed:
 			if gui.soundfx_on:
-				trash_sound_fx.set_stream(shoot_trash_sound)
+				randomize()
+				trash_sound_fx.set_stream(shoot_trash_sounds[randi() % shoot_trash_sounds.size()])
 				trash_sound_fx.play()
 			held_trash.drop()
 			deformed_pos = points[1]

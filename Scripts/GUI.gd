@@ -29,19 +29,18 @@ var popup : Popup
 onready var audio_stream_player = $"../AudioStreamPlayer2D"
 
 func _ready():
-	audio_stream_player.play()
 	connectEarthAnimationSpriteSignals()
 	connectSettingsMenuButtonSignals()
 	connectRetryButtonSignals()
 	savegame.open(save_path, File.READ)
 	save_data = savegame.get_var()
 	savegame.close()
-	if save_data:
-		high_score = save_data["highscore"]
-		music_on = save_data["music_on"]
-		soundfx_on = save_data["soundfx_on"]
-	else:
-		save_data = {"highscore": 0, "music_on": true, "soundfx_on": true}
+	if !save_data:
+		save_data = Dictionary()
+	high_score = save_data.get("highscore", 0)
+	music_on = save_data.get("music_on", true)
+	soundfx_on = save_data.get("soundfx_on", true)
+	
 	set_high_score(high_score)
 	change_setting(0, music_on)
 	change_setting(1, soundfx_on)
