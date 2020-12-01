@@ -15,11 +15,11 @@
 [ext_resource path="res://Assets/Zahnrad (Options)-Sheet.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Earth-Sheet.png" type="Texture" id=15]
 
-[sub_resource type="PanoramaSky" id=147]
+[sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
 
-[sub_resource type="Environment" id=148]
-background_sky = SubResource( 147 )
+[sub_resource type="Environment" id=2]
+background_sky = SubResource( 1 )
 background_sky_custom_fov = 3.3
 tonemap_mode = 1
 tonemap_exposure = 1.69
@@ -30,43 +30,43 @@ glow_bloom = 1.0
 adjustment_brightness = 5.04
 adjustment_contrast = 4.12
 
-[sub_resource type="AtlasTexture" id=149]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 15 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=150]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 15 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="SpriteFrames" id=151]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 149 ), SubResource( 150 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=152]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=153]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 14 )
 region = Rect2( 96, 0, 96, 96 )
 
-[sub_resource type="SpriteFrames" id=154]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 152 ), SubResource( 153 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": false,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=155]
+[sub_resource type="DynamicFont" id=9]
 size = 64
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=156]
+[sub_resource type="DynamicFont" id=10]
 size = 20
 font_data = ExtResource( 8 )
 
@@ -614,7 +614,7 @@ region = Rect2( 148, 1056, 74, 96 )
 atlas = ExtResource( 11 )
 region = Rect2( 222, 1056, 74, 96 )
 
-[sub_resource type="SpriteFrames" id=157]
+[sub_resource type="SpriteFrames" id=147]
 animations = [ {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ), SubResource( 146 ) ],
 "loop": false,
@@ -622,37 +622,37 @@ animations = [ {
 "speed": 100.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=158]
+[sub_resource type="StyleBoxFlat" id=148]
 bg_color = Color( 1, 1, 1, 0.231373 )
 
-[sub_resource type="StyleBoxEmpty" id=159]
+[sub_resource type="StyleBoxEmpty" id=149]
 
-[sub_resource type="StyleBoxEmpty" id=160]
+[sub_resource type="StyleBoxEmpty" id=150]
 
-[sub_resource type="StyleBoxEmpty" id=161]
+[sub_resource type="StyleBoxEmpty" id=151]
 
-[sub_resource type="StyleBoxFlat" id=162]
+[sub_resource type="StyleBoxFlat" id=152]
 bg_color = Color( 1, 1, 1, 0.145098 )
 corner_detail = 1
 
-[sub_resource type="DynamicFont" id=163]
+[sub_resource type="DynamicFont" id=153]
 size = 27
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxEmpty" id=164]
+[sub_resource type="StyleBoxEmpty" id=154]
 
-[sub_resource type="StyleBoxEmpty" id=165]
+[sub_resource type="StyleBoxEmpty" id=155]
 
-[sub_resource type="StyleBoxEmpty" id=166]
+[sub_resource type="StyleBoxEmpty" id=156]
 
-[sub_resource type="DynamicFont" id=167]
+[sub_resource type="DynamicFont" id=157]
 size = 20
 font_data = ExtResource( 8 )
 
 [node name="Main" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 148 )
+environment = SubResource( 2 )
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -691,7 +691,7 @@ script = ExtResource( 2 )
 [node name="EarthAnimatedSprite" type="AnimatedSprite" parent="Earth"]
 visible = false
 scale = Vector2( 5, 5 )
-frames = SubResource( 151 )
+frames = SubResource( 5 )
 
 [node name="Rubberband" type="Line2D" parent="."]
 position = Vector2( 0, 13 )
@@ -727,7 +727,7 @@ __meta__ = {
 
 [node name="SettingsButtonAnimatedSprite" type="AnimatedSprite" parent="GUI/SettingsMenuButton"]
 position = Vector2( 29.5, 43.6444 )
-frames = SubResource( 154 )
+frames = SubResource( 8 )
 
 [node name="Score" type="Label" parent="GUI"]
 anchor_left = 1.0
@@ -736,7 +736,7 @@ margin_left = -234.734
 margin_top = 42.1444
 margin_right = -32.7336
 margin_bottom = 126.145
-custom_fonts/font = SubResource( 155 )
+custom_fonts/font = SubResource( 9 )
 text = "0"
 align = 2
 __meta__ = {
@@ -750,7 +750,7 @@ margin_left = -238.79
 margin_top = 25.0318
 margin_right = -31.7898
 margin_bottom = 106.032
-custom_fonts/font = SubResource( 156 )
+custom_fonts/font = SubResource( 10 )
 text = "Highscore     0"
 align = 2
 __meta__ = {
@@ -770,7 +770,7 @@ __meta__ = {
 [node name="Animation" type="AnimatedSprite" parent="GUI/IntroGroup"]
 position = Vector2( 0, -341.65 )
 scale = Vector2( 4.017, 4.017 )
-frames = SubResource( 157 )
+frames = SubResource( 147 )
 centered = false
 
 [node name="Timer" type="Timer" parent="GUI/IntroGroup"]
@@ -789,12 +789,12 @@ margin_left = -101.5
 margin_top = -120.0
 margin_right = 101.5
 margin_bottom = -64.0
-custom_styles/hover = SubResource( 158 )
-custom_styles/pressed = SubResource( 159 )
-custom_styles/focus = SubResource( 160 )
-custom_styles/disabled = SubResource( 161 )
-custom_styles/normal = SubResource( 162 )
-custom_fonts/font = SubResource( 163 )
+custom_styles/hover = SubResource( 148 )
+custom_styles/pressed = SubResource( 149 )
+custom_styles/focus = SubResource( 150 )
+custom_styles/disabled = SubResource( 151 )
+custom_styles/normal = SubResource( 152 )
+custom_fonts/font = SubResource( 153 )
 text = "Retry"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -809,12 +809,12 @@ margin_left = -127.5
 margin_top = -47.5
 margin_right = -13.5
 margin_bottom = -20.5
-custom_styles/hover = SubResource( 158 )
-custom_styles/pressed = SubResource( 164 )
-custom_styles/focus = SubResource( 165 )
-custom_styles/disabled = SubResource( 166 )
-custom_styles/normal = SubResource( 162 )
-custom_fonts/font = SubResource( 167 )
+custom_styles/hover = SubResource( 148 )
+custom_styles/pressed = SubResource( 154 )
+custom_styles/focus = SubResource( 155 )
+custom_styles/disabled = SubResource( 156 )
+custom_styles/normal = SubResource( 152 )
+custom_fonts/font = SubResource( 157 )
 text = "Skip Intro"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JunkTrinkpäckchen.png-52f4eb200c1532264ae4dc70d191668d.stex"
+path="res://.import/JunkTrinkpackchen.png-bab1a2f59645d830b5a3e7022b72b9bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Trash/Content/JunkTrinkpäckchen.png"
-dest_files=[ "res://.import/JunkTrinkpäckchen.png-52f4eb200c1532264ae4dc70d191668d.stex" ]
+source_file="res://Assets/Trash/Content/JunkTrinkpackchen.png"
+dest_files=[ "res://.import/JunkTrinkpackchen.png-bab1a2f59645d830b5a3e7022b72b9bc.stex" ]
 
 [params]
 

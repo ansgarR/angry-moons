@@ -11,7 +11,7 @@ const contents = [
 	preload(\"res://Assets/Trash/Content/JunkCan.png\"),
 	preload(\"res://Assets/Trash/Content/JunkPizzaslice.png\"),
 	preload(\"res://Assets/Trash/Content/JunkTaschentuch.png\"),
-	preload(\"res://Assets/Trash/Content/JunkTrinkpäckchen.png\")
+	preload(\"res://Assets/Trash/Content/JunkTrinkpackchen.png\")
 ]
 
 func _ready():
