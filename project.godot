@@ -35,7 +35,7 @@ _global_script_class_icons={
 config/name="angry-moons"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://Assets/icons/1024.png"
-config/macos_native_icon="res://Assets/icons/angrymoons.icns"
+config/macos_native_icon="res://Assets/icons/icon.icns"
 config/windows_native_icon="res://Assets/icons/icon.ico"
 
 [display]
