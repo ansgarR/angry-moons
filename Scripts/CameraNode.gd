@@ -47,14 +47,18 @@ func _process(delta):
 	var zoom = max(zoomX, zoomY)
 	camera.set_zoom(Vector2(zoom,zoom))
 	
-	var w = wanted_degrees
-	var d = (w - rotation_degrees) > 180
-	if d:
+	var w = normDegree(wanted_degrees)
+	var c = normDegree(rotation_degrees)
+	if (w - c) > 180:
+		#print("a ",c, ", ", w)
 		w -= 360.0
+	elif (w - c) < -180:
+		#print("b ", c, ", ", w)
+		c -= 360.0
 	
-	rotation_degrees = move_toward(rotation_degrees, w, delta * 400)
-	if d:
-		rotation_degrees += 360.0
+	rotation_degrees = normDegree(move_toward(c, w, delta * 400))
+	#if(move_toward(normDegree(rotation_degrees), w, delta * 400) - rotation_degrees > 0.000000001):
+	#	print(rotation_degrees, ", ",w)
 	
 	var calc_wanted_y = -wanted_y*2 + zoom*wanted_y
 	var curr_y = camera.position.y
@@ -65,6 +69,12 @@ func _process(delta):
 	else:
 		camera_drag = 0
 	
+func normDegree(angle : float) -> float:
+	var normalized = fmod(angle, 360.0);
+	if normalized < 0:
+		normalized += 360;
+	return normalized;
+
 func focusEarth(moon : Moon):
 	focus_earth = true
 	want_drag = false
