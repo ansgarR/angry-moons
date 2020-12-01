@@ -40,5 +40,6 @@ func _on_skip_button_pressed():
 		skip_button.queue_free()
 
 func _on_StartDelay_timeout():
-	timer.start()
-	emit_signal("intro_started")
+	if !fade:
+		timer.start()
+		emit_signal("intro_started")
